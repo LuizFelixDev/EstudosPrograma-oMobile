@@ -1,0 +1,13 @@
+Comandos CMD
+1. del(delete) deleta arquivos
+2. Is(list) lista arquivos no diretório
+3. cls(clear) limpa terminal
+4. cd(change directory) muda de diretório
+5. mkdir(make directory) cria um diretório novo
+6. code(vscode) abre o editor de código do vscode
+
+comandos npm e node
+1. npm init-y inicia um projeto node(sem pedir nada)
+2. npm init inicia um projeto node(pedindo informações préviamente)
+3. node [arquivo] roda arquivo javascript
+4. node--watch[arquivo] node fica vigiando arquivo
