@@ -16,6 +16,37 @@ async function rollDice(){
     return Math.floor(Math.random() * 6)+ 1; 
 };
 
+async function getRandomBlock(){
+    let random = Math.floor(Math.random() * 3) +1;
+    let result 
+
+    switch(true){
+        case random == 1:
+            result = "RETA"
+            break;
+        case random == 2:
+            result = "CURVA"
+            break;
+        default:
+            result = "CONFRONTO"
+            break;
+    };
+
+    return result;
+}
+
+async function playRaceEngine(character1, character2){
+    for(let i=1; i<6; i++){
+        console.log(`🏁 Rodada ${i}`);
+        let block = await getRandomBlock();
+        console.log(`Bloco: ${block}`);
+    };
+};
+
+
+
 (async function main(){
     console.log(`🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`);
+
+    await playRaceEngine(player1, player2);
 })();
