@@ -16,6 +16,8 @@ async function rollDice(){
     return Math.floor(Math.random() * 6)+ 1; 
 };
 
+
+// Sortear blocos
 async function getRandomBlock(){
     let random = Math.floor(Math.random() * 3) +1;
     let result 
@@ -38,8 +40,30 @@ async function getRandomBlock(){
 async function playRaceEngine(character1, character2){
     for(let i=1; i<6; i++){
         console.log(`🏁 Rodada ${i}`);
+        // Sortear bloco
         let block = await getRandomBlock();
         console.log(`Bloco: ${block}`);
+    };
+
+    //Rolar dado
+    let diceResult1 = await rollDice();    
+    let diceResult2 = await rollDice();
+
+    //Testar abilidade
+    let testSkill1 = 0;
+    let testSkill2 = 0;
+
+    if(block == "RETA"){
+        testSkill1 = rollDice + player1.VELOCIDADE;
+        testSkill2 = rollDice + player2.VELOCIDADE;
+    };
+    if(block == "CURVA"){
+        testSkill1 = rollDice + player1.MANOBRABILIDADE;
+        testSkill2 = rollDice + player2.MANOBRABILIDADE;
+    };
+    if(block == "CONFRONTO"){
+        testSkill1 = rollDice + player1.PODER;
+        testSkill2 = rollDice + player2.PODER;
     };
 };
 
