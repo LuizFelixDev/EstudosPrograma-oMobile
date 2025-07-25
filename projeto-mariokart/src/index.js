@@ -79,6 +79,21 @@ async function playRaceEngine(character1, character2){
 
             await logRollResult(player1.NOME, "poder", diceResult1, player1.MANOBRABILIDADE);
             await logRollResult(player2.NOME, "poder", diceResult2, player2.MANOBRABILIDADE);
+
+
+            player2.PONTOS -=
+                powerResult1 > powerResult2 && player2.PONTOS > 0 ? 1 : 0;
+
+            player1.PONTOS -=
+                powerResult2 > powerResult1 && player1.PONTOS > 0 ? 1 : 0;
+
+            if(powerResult1 > powerResult2){
+                if(player2 > 0){
+                    character2.PONTOS--;
+                };
+            };
+
+            console.log(powerResult1 == powerResult2 ? "Confronto empatado! Nenhum ponto foi perdido"  : "");
         };
         if(testSkill1 > testSkill2){
             console.log(`${player1.NOME} marcou um ponto!`);
