@@ -3,6 +3,7 @@ const player1 = {
     MANOBRABILIDADE: 4,
     VELOCIDADE: 3,
     PODER: 4,
+    PONTOS: 0,
 };
 
 const player2 = {
@@ -10,6 +11,7 @@ const player2 = {
     MANOBRABILIDADE: 2,
     VELOCIDADE: 2,
     PODER: 5,
+    PONTOS: 0,
 };
 
 async function rollDice(){
@@ -56,33 +58,41 @@ async function playRaceEngine(character1, character2){
         let testSkill2 = 0;
 
         if(block == "RETA"){
-            testSkill1 = rollDice + player1.VELOCIDADE;
-            testSkill2 = rollDice + player2.VELOCIDADE;
+            testSkill1 = diceResult1 + player1.VELOCIDADE;
+            testSkill2 = diceResult2 + player2.VELOCIDADE;
 
             await logRollResult(player1.NOME, "velocidade", diceResult1, player1.VELOCIDADE);
             await logRollResult(player2.NOME, "velocidade", diceResult2, player2.VELOCIDADE);
         };
         if(block == "CURVA"){
-            testSkill1 = rollDice + player1.MANOBRABILIDADE;
-            testSkill2 = rollDice + player2.MANOBRABILIDADE;
+            testSkill1 = diceResult1 + player1.MANOBRABILIDADE;
+            testSkill2 = diceResult2 + player2.MANOBRABILIDADE;
 
             await logRollResult(player1.NOME, "manobrabilidade", diceResult1, player1.MANOBRABILIDADE);
             await logRollResult(player2.NOME, "manobrabilidade", diceResult2, player2.MANOBRABILIDADE);
         };
         if(block == "CONFRONTO"){
-            testSkill1 = rollDice + player1.PODER;
-            testSkill2 = rollDice + player2.PODER;
+            let powerResult1 = diceResult1 + player1.PODER;
+            let powerResult2 = diceResult2 + player2.PODER;
 
-            await logRollResult(player1.NOME, "poder", diceResult1, player1.PODER);
-            await logRollResult(player2.NOME, "poder", diceResult2, player2.PODER);
+            console.log(`${player1.NOME} confrontou com ${character2.NOME}🥊`);
+
+            await logRollResult(player1.NOME, "poder", diceResult1, player1.MANOBRABILIDADE);
+            await logRollResult(player2.NOME, "poder", diceResult2, player2.MANOBRABILIDADE);
         };
+        if(testSkill1 > testSkill2){
+            console.log(`${player1.NOME} marcou um ponto!`);
+            player1.PONTOS++;
+        }else if(testSkill2 > testSkill1){
+            console.log(`${player2.NOME} marcou um ponto`);
+            player2.PONTOS++;
+        };
+        console.log(testSkill1);
+        console.log(testSkill2);
+        console.log("===============================================")
+        
     };
-
-    //Rolar dado
-    
 };
-
-
 
 (async function main(){
     console.log(`🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`);
