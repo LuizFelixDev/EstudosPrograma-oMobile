@@ -4,7 +4,7 @@ async function getFullName(comId, productName) {
 };
 
 // Função principal do Merge Sort
-function mergeSort(arr) {
+async function mergeSort(arr) {
     // Caso base: se o array tiver 1 ou nenhum elemento, ele já está ordenado
     if (arr.length <= 1) return arr;
   
