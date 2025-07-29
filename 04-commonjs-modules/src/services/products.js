@@ -15,38 +15,51 @@ const apiURL = {
 }
 
 // Função principal do Merge Sort
-async function mergeSort(arr) {
-    // Caso base: se o array tiver 1 ou nenhum elemento, ele já está ordenado
-    if (arr.length <= 1) return arr;
-  
-    // Divide o array no meio
-    const middle = Math.floor(arr.length / 2);
-    const left = arr.slice(0, middle);      // metade esquerda
-    const right = arr.slice(middle);        // metade direita
-  
-    // Chamada recursiva para ordenar as metades
-    return merge(mergeSort(left), mergeSort(right));
+function mergeSort(arr) {
+  if (!Array.isArray(arr)) {
+      console.error("mergeSort recebeu algo que não é um array:", arr);
+      return [];
   }
-  
-  // Função auxiliar para "mesclar" dois arrays ordenados
-  function merge(left, right) {
-    let result = [];
-    let i = 0, j = 0;
-  
-    // Compara os elementos dos dois arrays e adiciona o menor ao resultado
-    while (i < left.length && j < right.length) {
+
+  if (arr.length <= 1) {
+      return arr;
+  }
+
+  const meio = Math.floor(arr.length / 2);
+  const esquerda = mergeSort(arr.slice(0, meio));
+  const direita = mergeSort(arr.slice(meio));
+
+  return merge(esquerda, direita);
+}
+
+function merge(left, right) {
+  if (!Array.isArray(left) || !Array.isArray(right)) {
+      console.error("merge recebeu valores inválidos:", { left, right });
+      return [];
+  }
+
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
       if (left[i] < right[j]) {
-        result.push(left[i]);
-        i++;
+          result.push(left[i]);
+          i++;
       } else {
-        result.push(right[j]);
-        j++;
+          result.push(right[j]);
+          j++;
       }
-    }
-  
-    // Adiciona os elementos restantes (se houver) de cada lado
-    return result.concat(left.slice(i)).concat(right.slice(j));
   }
+
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+
+module.exports = {
+  mergeSort,
+  merge
+};
+
 
 module.exports = {
     getFullName,
