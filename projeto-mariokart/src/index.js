@@ -81,19 +81,17 @@ async function playRaceEngine(character1, character2){
             await logRollResult(player2.NOME, "poder", diceResult2, player2.MANOBRABILIDADE);
 
 
-            player2.PONTOS -=
-                powerResult1 > powerResult2 && player2.PONTOS > 0 ? 1 : 0;
-
-            player1.PONTOS -=
-                powerResult2 > powerResult1 && player1.PONTOS > 0 ? 1 : 0;
-
-            if(powerResult1 > powerResult2){
-                if(player2 > 0){
-                    character2.PONTOS--;
-                };
+            if(powerResult1 > powerResult2 && player2.PONTOS > 0){
+                console.log(`${player1.NOME} venceu o confronto! ${character2.NOME} perdeu 1 ponto 🐢`);
+                player2.PONTOS--;
             };
-
-            console.log(powerResult1 == powerResult2 ? "Confronto empatado! Nenhum ponto foi perdido"  : "");
+            if(powerResult2 > powerResult1 && player1.PONTOS > 0){
+                console.log(`${player2.NOME} venceu o confronto! ${character1.NOME} perdeu 1 ponto 🐢`);
+                player1.PONTOS--;
+            };
+            if(powerResult1 === powerResult2){
+                console.log(`Confronto empatado! Nenhum ponto perdido`)
+            };
         };
         if(testSkill1 > testSkill2){
             console.log(`${player1.NOME} marcou um ponto!`);
@@ -102,15 +100,28 @@ async function playRaceEngine(character1, character2){
             console.log(`${player2.NOME} marcou um ponto`);
             player2.PONTOS++;
         };
-        console.log(testSkill1);
-        console.log(testSkill2);
         console.log("===============================================")
         
     };
+};
+
+async function declareWinner(player1, player2){
+ console.log("Resultado final:");
+ console.log(`${player1.NOME}: ${player1.PONTOS} pontos(s)`);
+ console.log(`${player2.NOME}: ${player2.PONTOS} pontos(s)`);
+
+ if(player1.PONTOS > player2.PONTOS){
+    console.log(`${player1.NOME} venceu a corrida🏆`);
+ } else if(player2.PONTOS > player1.PONTOS){
+    console.log(`${player2.NOME} venceu a corrida🏆`);
+ } else {
+    console.log("A corrida terminou em empate!")
+ }
 };
 
 (async function main(){
     console.log(`🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`);
 
     await playRaceEngine(player1, player2);
+    await declareWinner(player1, player2);
 })();
