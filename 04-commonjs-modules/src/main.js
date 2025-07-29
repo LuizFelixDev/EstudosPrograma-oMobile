@@ -12,8 +12,8 @@ async function main(){
 
     // console.log(cofig.devArea.production);
     // console.log(cofig.client.device);
-    
-    dataBase.connectToDataBase;
+
+    dataBase.connectToDataBase("Banco Sanatander");
 };
 
 main();

@@ -1,6 +1,6 @@
 //export default
 
-exports.connectToDataBase = (dateName) => {
+exports.connectToDataBase = (dataName) => {
     console.log("Se conectando ao banco: " + dataName);
 };
 
