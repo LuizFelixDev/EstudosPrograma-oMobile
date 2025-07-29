@@ -1,7 +1,18 @@
 // Todas as funções que lidam com produtos
+
+//hidden function
+async function  doBreakLine() {
+  console.log("\n");
+}
 async function getFullName(comId, productName) {
+    await doBreakLine();
     console.log(comId + "--" + productName);
 };
+
+//hidden const
+const apiURL = {
+  url: "www.google.com/api"
+}
 
 // Função principal do Merge Sort
 async function mergeSort(arr) {
