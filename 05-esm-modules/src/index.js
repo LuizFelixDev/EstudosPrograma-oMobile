@@ -1,3 +1,4 @@
-import connectDatabase from "./utils/database.js"
+import * as mode from  "./utils/database.js"
 
-connectDatabase("my-database");
+mode.connectDatabase("MySQL");
+mode.disconnectDatabase();

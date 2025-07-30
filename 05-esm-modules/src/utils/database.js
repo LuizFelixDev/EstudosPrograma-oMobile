@@ -3,6 +3,10 @@ async function connectDatabase(dataBase){
     console.log("conectado ao banco " + dataBase);
 };
 
+async function disconnectDatabase(){
+    console.log("desconectando do banco de dados");
+};
 
-
-export default connectDatabase;
+export {
+    connectDatabase, disconnectDatabase,
+};
