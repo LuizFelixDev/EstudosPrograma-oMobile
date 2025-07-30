@@ -1,3 +1,6 @@
 import {connectDatabase, databaseType} from  "./utils/database.js"
+import * as api from "./utils/api.js";
 
-mode.connectDatabase("MySQL");
+
+api.getDataFromApi();
+connectDatabase("MySQL");
