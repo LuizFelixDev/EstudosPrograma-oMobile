@@ -1,3 +1,8 @@
+const databaseType = {
+    userType: "admim",
+    typeData: "datalocal",
+};
+
 async function connectDatabase(dataBase){
     // lógica de conexão
     console.log("conectado ao banco " + dataBase);
@@ -8,5 +13,5 @@ async function disconnectDatabase(){
 };
 
 export {
-    connectDatabase, disconnectDatabase,
+    connectDatabase, disconnectDatabase, databaseType
 };
