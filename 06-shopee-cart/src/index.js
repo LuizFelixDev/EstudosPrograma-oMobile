@@ -7,10 +7,15 @@ const myWishList = []
 console.log("Welcome to the your Shopee Cart!");
 
 const item1 = await createItem("hotwheels ferrari",20.99, 7);
-const item2 = await createItem("hotwheels lamborghini", 39.99, 3);
+const item2 = await createItem("hotwheels lamborghini", 39.99, 1);
 
+//adicionei 2 itens no carrinho
 cartService.addItem(myCart, item1);
-cartService.addItem(myWishList, item2);
+cartService.addItem(myCart, item2);
+
+//deletei 2 itens do carrinho
+await cartService.deleteItem(myCart, item1.name)
+await cartService.deleteItem(myCart, item2.name)
 
 console.log("Shopee Cart TOTAL IS:");
 await cartService.calculateTotal(myCart);

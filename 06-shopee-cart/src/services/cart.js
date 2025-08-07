@@ -7,11 +7,15 @@ async function addItem(userCart, item){
 }
 // -> deletar item do carrinho
 async function deleteItem(userCart, name) {
-    
+    const index = userCart.findIndex((item) => item.name === name);
+
+    if(index ==! -1){
+        userCart.splice(index, 1);
+    }
 }
 // -> remover um item
-async function removeItem(userCart, index) {
-    
+async function removeItem(userCart, name) {
+
 }
 // -> calcular o total
 async function calculateTotal(userCart) {
