@@ -13,14 +13,31 @@ async function deleteItem(userCart, name) {
         userCart.splice(index, 1);
     }
 }
-// -> remover um item
-async function removeItem(userCart, index) {
-    // tranforma o indice visual do usuário, para o indice do backend
-    const delteIndex = index -1;
+// -> remover um item - diminue um item
+async function removeItem(userCart, item) {
+    const indexFound = userCart.findIndex((p) => p.name === item.name);
 
-    if(delteIndex >= 0 && delteIndex < userCart.length){
-        userCart.splice(delteIndex, 1);
+    if(indexFound == -1){
+        console.log("item não encontrado");
+        return;
     }
+
+    //3. item > 1 subtrair um item, item = 1 deletar o item
+    if(userCart[indexFound].quantity > 1){
+        userCart[indexFound].quantity -= 1;
+    }
+
+    //4. caso item = 1 deletar o item
+    else if(userCart[indexFound].quantity == 1){
+        userCart.splice(indexFound, 1);
+    };
+
+    // // tranforma o indice visual do usuário, para o indice do backend
+    // const delteIndex = index -1;
+
+    // if(delteIndex >= 0 && delteIndex < userCart.length){
+    //     userCart.splice(delteIndex, 1);
+    // }
 }
 // -> calcular o total
 async function calculateTotal(userCart) {
