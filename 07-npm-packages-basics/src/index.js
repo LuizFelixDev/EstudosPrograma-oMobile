@@ -1,11 +1,27 @@
-import chalk from 'chalk';
-import logSymbols from 'log-symbols';
+const { Client } = require("whatsapp-web.js");
+const qrcode = require("qrcode-terminal");
 
-console.log(chalk.bgBlack.green(logSymbols.success,"Sercidor iniciado com sucesso!"));
+const client = new Client();
 
-console.log(chalk.bgBlack.red(logSymbols.error, "Servidor com problema!"))
+client.on("qr", (qr) => {
+    qrcode.generate(qr, { small: true });
+});
 
-console.log(chalk.bgBlack.blue(logSymbols.info, "Servidor está em observaçã!"))
+client.on("ready", () => {
+    console.log("Bot pronto!");
 
-// console.log(chalk.red.bgBlack.italic('Hello world!'));
-// console.log(chalk.blue.bgBlack.italic('I`m Sonic X'));
+    const numero = "iouihiuiu"; 
+
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+            client.sendMessage(
+                numero, 
+                `Essa foi mandada automaticamente usando NodeJS 🚀, só pra vc ver que seu sei programar em javaScript)`
+            )
+            .then(() => console.log(`Mensagem ${i + 1} enviada!`))
+            .catch(err => console.error("Erro ao enviar:", err));
+        }, 120000); 
+    }
+});
+
+client.initialize();
