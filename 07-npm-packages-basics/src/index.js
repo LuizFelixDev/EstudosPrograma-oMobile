@@ -5,5 +5,7 @@ console.log(chalk.bgBlack.green(logSymbols.success,"Sercidor iniciado com sucess
 
 console.log(chalk.bgBlack.red(logSymbols.error, "Servidor com problema!"))
 
+console.log(chalk.bgBlack.blue(logSymbols.info, "Servidor está em observaçã!"))
+
 // console.log(chalk.red.bgBlack.italic('Hello world!'));
 // console.log(chalk.blue.bgBlack.italic('I`m Sonic X'));
