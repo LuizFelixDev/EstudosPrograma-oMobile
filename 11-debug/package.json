@@ -2,17 +2,16 @@
   "name": "11-debug",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start:dev": "tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "tsup": "^8.5.0",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
-  }
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "description": ""
 }
